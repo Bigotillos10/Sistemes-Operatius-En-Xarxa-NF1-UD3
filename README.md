@@ -77,16 +77,21 @@ Configurar el directori plantilla `/etc/skel` per incloure un fitxer de benvingu
 sudo mkdir /etc/skel/Documents
 sudo touch /etc/skel/benvinguda.txt
 echo "alias ll='ls -la --color=auto'" | sudo tee -a /etc/skel/.bashrc
+```
 
 # Verificació de la shell per defecte a /etc/adduser.conf
+```bash
 grep "DSHELL" /etc/adduser.conf
+```
 
 # Creació, comprovació i eliminació de l'usuari de prova
+```bash
 sudo adduser provaXX
 su - provaXX
 ll
 exit
-sudo deluser -r provaXX
+sudo deluser -r provaXX 
+```
 
 ### Tasca 3. Creació i configuració d'usuaris
 
@@ -94,20 +99,30 @@ sudo deluser -r provaXX
 Crear els usuaris `pau_dev` i `laura_dev` amb `adduser`, i `marc_sys` i `auditor` amb `useradd`. Assignar els seus grups principals/secundaris, establir la contrasenya inicial `Canviam2026!` a tots ells i forçar el canvi de contrasenya a `pau_dev` en el pròxim inici de sessió.
 
 **Comanda o configuració utilitzada**
+
 ```bash
 # Creació amb adduser
 sudo adduser --ingroup devs pau_dev
 sudo adduser --ingroup devs laura_dev
+```
 
 # Creació amb useradd
+
+```bash
 sudo useradd -m -g sysadmin -G devs -s /bin/bash -c "Marc Soler" marc_sys
 sudo useradd -m -g auditor -s /bin/bash -c "Usuari Auditor" auditor
+```
 
 # Assignació de contrasenya inicial
+
+```bash
 echo "pau_dev:Canviam2026!" | sudo chpasswd
 echo "laura_dev:Canviam2026!" | sudo chpasswd
 echo "marc_sys:Canviam2026!" | sudo chpasswd
 echo "auditor:Canviam2026!" | sudo chpasswd
+```
 
 # Obligar el canvi de contrasenya a pau_dev
+```bash
 sudo chage -d 0 pau_dev
+```
