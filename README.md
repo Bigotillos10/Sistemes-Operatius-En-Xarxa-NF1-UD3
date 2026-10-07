@@ -88,10 +88,9 @@ ll
 exit
 sudo deluser -r provaXX
 
-
 ### Tasca 3. Creació i configuració d'usuaris
 
-**Objectiu de l'acció**  
+**Objectiu de l''acció**  
 Crear els usuaris `pau_dev` i `laura_dev` amb `adduser`, i `marc_sys` i `auditor` amb `useradd`. Assignar els seus grups principals/secundaris, establir la contrasenya inicial `Canviam2026!` a tots ells i forçar el canvi de contrasenya a `pau_dev` en el pròxim inici de sessió.
 
 **Comanda o configuració utilitzada**
@@ -112,69 +111,3 @@ echo "auditor:Canviam2026!" | sudo chpasswd
 
 # Obligar el canvi de contrasenya a pau_dev
 sudo chage -d 0 pau_dev
-
-
-### Tasca 4. Inspecció del sistema i fitxers de configuració
-
-**Objectiu de l'acció**  
-Inspeccionar les dades de l'usuari `marc_sys` amb la comanda `id`, analitzar les diferències d'informació i permisos entre els fitxers `/etc/passwd` i `/etc/shadow` per a `pau_dev`, i identificar el directori plantilla i el fitxer que en defineix la configuració.
-
-**Comanda o configuració utilitzada**
-```bash
-# Inspecció de marc_sys
-id marc_sys
-
-# Consulta de pau_dev a /etc/passwd i /etc/shadow
-grep pau_dev /etc/passwd
-sudo grep pau_dev /etc/shadow
-ls -l /etc/shadow
-
-# Comprovació de la configuració de la plantilla SKEL
-grep SKEL /etc/adduser.conf
-
-
-### Tasca 5. Manteniment, bloqueig i eliminació
-
-**Objectiu de l'acció**  
-Bloquejar temporalment el compte de `pau_dev`, comprovar la marca de bloqueig al fitxer `/etc/shadow`, desbloquejar-lo de nou i eliminar l'usuari `auditor` de manera definitiva juntament amb el seu directori personal i bústia de correu.
-
-**Comanda o configuració utilitzada**
-```bash
-# Bloquejar l'usuari pau_dev
-sudo usermod -L pau_dev
-
-# Verificar el bloqueig a /etc/shadow
-sudo grep pau_dev /etc/shadow
-
-# Desbloquejar l'usuari pau_dev
-sudo usermod -U pau_dev
-
-# Eliminar l'usuari auditor, el seu directori personal i bústia
-sudo deluser --remove-home auditor
-
-### Tasca 6. Personalització de l'entorn d'usuari
-
-**Objectiu de l'acció**  
-Instal·lar el shell `fish`, modificar el shell per defecte de l'usuari `laura_dev` a `/usr/bin/fish`, verificar el canvi al fitxer `/etc/passwd` i iniciar sessió amb `laura_dev` per comprovar el funcionament de l'entorn `fish`.
-
-**Comanda o configuració utilitzada**
-```bash
-# Instal·lació del paquet fish
-sudo apt update && sudo apt install -y fish
-
-# Canvi de shell per a laura_dev
-sudo usermod -s /usr/bin/fish laura_dev
-
-# Comprovació a /etc/passwd i verificació d'accés
-grep laura_dev /etc/passwd
-su - laura_dev
-
-## Conclusions i Valoració Personal
-
-**Objectiu de l'acció**  
-Realitzar un resum global del treball realitzat, valorar les dificultats trobades durant la configuració d'usuaris i grups a Ubuntu Server i verificar el compliment dels objectius fixats per a TechData S.L.
-
-**Explicació i reflexió final**
-- **Resum del treball realitzat:** S'ha creat i configurat correctament la jerarquia de grups (`devs`, `sysadmin`, `auditor`) i la totalitat dels usuaris sol·licitats, aplicant les polítiques de seguretat, la plantilla de perfils `/etc/skel` i la personalització dels entorns de treball.
-- **Dificultats trobades:** [Comenta breument quines dificultats has tingut durant la pràctica, com les diferències de paràmetres entre `adduser` i `useradd` o la gestió de permisos].
-- **Comprovació de criteris d'avaluació:** Es confirma que el servidor de l'empresa disposa d'un entorn d'usuaris i grups plenament funcional, segur i documentat segons els requisits establerts.
