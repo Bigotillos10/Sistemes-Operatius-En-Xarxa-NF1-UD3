@@ -63,11 +63,9 @@ sudo groupadd sysadmin
 sudo groupadd auditor
 ```
 
-![sudo groupadd devs](img/Captura%20de%20pantalla%202026-10-07%20202345.png)
-
 # Comprovació de les últimes línies de /etc/group
 tail -n 5 /etc/group
-
+![tail -n 5 /etc/group](img/Captura%20de%20pantalla%202026-10-07%20202941.png)
 
 ### Tasca 2. Gestió dels perfils d'usuari (`/etc/skel`)
 
