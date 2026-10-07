@@ -126,3 +126,22 @@ echo "auditor:Canviam2026!" | sudo chpasswd
 ```bash
 sudo chage -d 0 pau_dev
 ```
+
+### Tasca 4. Inspecció del sistema i fitxers de configuració
+
+**Objectiu de l'acció**  
+Inspeccionar les dades de l'usuari `marc_sys` amb la comanda `id`, analitzar les diferències d'informació i permisos entre els fitxers `/etc/passwd` i `/etc/shadow` per a `pau_dev`, i identificar el directori plantilla i el fitxer que en defineix la configuració.
+
+**Comanda o configuració utilitzada**
+```bash
+# Inspecció de marc_sys
+id marc_sys
+
+# Consulta de pau_dev a /etc/passwd i /etc/shadow
+
+grep pau_dev /etc/passwd
+sudo grep pau_dev /etc/shadow
+ls -l /etc/shadow
+
+# Comprovació de la configuració de la plantilla SKEL
+grep SKEL /etc/adduser.conf
