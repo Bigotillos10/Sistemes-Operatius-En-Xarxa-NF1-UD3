@@ -56,12 +56,17 @@ Crear els grups del sistema sol·licitats (devs, sysadmin, auditor) i verificar 
 **Comanda o configuració utilitzada**
 bash
 # Creació dels tres grups requerits
+
+```bash
+
 sudo groupadd devs
 ![sudo groupadd devs](img/Captura%20de%20pantalla%202026-10-07%20202345.png)
 
 sudo groupadd sysadmin
+
 sudo groupadd auditor
 
+```
 
 # Comprovació de les últimes línies de /etc/group
 tail -n 5 /etc/group
