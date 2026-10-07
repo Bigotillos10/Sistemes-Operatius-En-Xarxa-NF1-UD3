@@ -1,11 +1,10 @@
 # NF1.UD3: Usuaris i grups — Empresa "TechData S.L."
 
 
-**Assignatura:** Administració de Sistemes Operatius en Xarxa  
-**Alumne/a:** [El teu nom i cognoms]  
-**Grup / Num. Llista:** [Ex: ASIX1 - 12]  
-**Data d'entrega:** [Data de lliurament]  
-**Professor/a:** [Nom del professor/a]  
+**Assignatura:** Sistemes Operatius en Xarxa  
+**Alumne/a:** Biel Clave   
+**Data d'entrega:** 16/10/2026
+**Professor/a:** Carles Fugaroles 
 
 ---
 
@@ -58,6 +57,8 @@ Crear els grups del sistema sol·licitats (devs, sysadmin, auditor) i verificar 
 bash
 # Creació dels tres grups requerits
 sudo groupadd devs
+![sudo groupadd devs](img/Captura%20de%20pantalla%202026-10-07%20202345.png)
+
 sudo groupadd sysadmin
 sudo groupadd auditor
 
